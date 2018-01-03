@@ -138,5 +138,9 @@ fn send<T: serde::de::DeserializeOwned>(request: RequestBuilder) -> Result<T, Er
         }
     }
 
+    for line in body.lines() {
+        println!("{}", &line);
+    }
+
     json::from_str(&body).map_err(|err| Error::from(err))
 }
